@@ -1,0 +1,48 @@
+version: '3'
+
+networks:
+    nginx-env-bravi:
+
+services:
+    nginx:
+        image: nginx:stable-alpine
+        container_name: nginx
+        ports:
+            - "80:80"
+        volumes:
+            - ./:/var/www/html
+            - ./docker/nginx:/etc/nginx
+        depends_on:
+            - php
+            - mysql
+        networks:
+            - nginx-env-bravi
+
+    php:
+        build:
+            context: .
+            dockerfile: ./docker/php/Dockerfile
+        container_name: php
+        ports:
+            - "9000:9000"
+        volumes:
+            - ./:/var/www/html
+        depends_on:
+            - mysql
+        networks:
+            - nginx-env-bravi
+
+    mysql:
+        image: mysql:8
+        container_name: mysql8
+        ports:
+            - "3306:3306"
+        volumes:
+            - ./docker/databases/mysql:/var/lib/mysql
+        command: --default-authentication-plugin=mysql_native_password --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
+        restart: always
+        environment:
+            MYSQL_ROOT_PASSWORD: root
+            MYSQL_PASSWORD: root
+        networks:
+            - nginx-env-bravi
