@@ -27,5 +27,10 @@ Esta é uma API desenvolvida em Laravel que oferece diversas funcionalidades ref
 8. Existe um arquivo na raíz do projeto com o nome de `endpoints.json` que contém todas as rotas da aplicação. Você pode importá-lo no Insomnia para realizar requisições aos endpoints da aplicação.
 9. Estamos prontos! A API vai estar disponível no endereço [http://localhost/api](http://localhost/api).
 
+### Acesso à API Online
+Para acessar a API online, você pode utilizar o seguinte link: [API Bravi Online](https://bravi.gustakoch.com.br/api)
+
+Lembre-se de que esta é uma versão online da API, então você pode realizar requisições aos endpoints diretamente pelo navegador ou utilizando ferramentas como o Postman ou Insomnia.
+
 ### Suportes balanceados
 Para validar a ordem dos parênteses em uma string, execute o comando `php artisan validate:brackets "sua-string-de-parênteses"` no terminal. Isso verificará se a ordem dos parênteses na string fornecida é válida.
